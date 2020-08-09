@@ -14,5 +14,5 @@ env:
 cache: pip
 
 after_success:
-  - "chmod a+x travis-automerge-script"
-  - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline travis-automerge-script"
+  - "chmod a+x chiragsoni81245/TestCIPipline/travis-automerge-script"
+  - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline chiragsoni81245/TestCIPipline/travis-automerge-script"
