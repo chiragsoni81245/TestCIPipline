@@ -21,6 +21,5 @@ sudo: false
 cache: pip
 
 after_success:
-  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/chiragsoni81245/TestCIPipline/travis-automerge-script"
-  - "chmod a+x /tmp/travis-automerge-script"
-  - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=develop GITHUB_REPO=cdown/srt /tmp/travis-automerge-script"
+  - chmod a+x ./travis-automerge-script
+  - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=develop GITHUB_REPO=cdown/srt ./travis-automerge-script"
