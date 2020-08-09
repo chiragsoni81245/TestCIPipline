@@ -3,5 +3,17 @@ python:
   - 3.6
 install:
   - pip install -r requirements.txt
+
 script:
   - pytest -v
+
+env:
+  # Github deployment key
+  - secure: "213ea823d69962fea5e6e9c137503bff77942d32"
+
+cache: pip
+
+after_success:
+  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
+  - "chmod a+x /tmp/travis-automerge"
+  - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline /tmp/travis-automerge"

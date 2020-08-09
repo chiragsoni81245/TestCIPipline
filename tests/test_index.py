@@ -13,4 +13,4 @@ def client():
 
 def test_empty_db(client):
 	rv = client.get('/')
-	assert b'V1 is hosted' in rv.data
+	assert b'Hello Chirag' in rv.data

@@ -1,6 +1,10 @@
 from app import app
-
+from flask import render_template
 
 @app.route("/", methods=["GET","POST"])
 def index():
-	return "<h1>V2 is hosted</h1>"
+	return render_template("index.html")
+
+
+
+
