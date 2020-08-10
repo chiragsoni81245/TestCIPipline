@@ -14,6 +14,7 @@ branches:
   - master
   - "/^f//"
   
+
 deploy:
   provider: codedeploy
   revision_type: github
@@ -25,8 +26,7 @@ deploy:
   wait-until-deployed: true
   on:
     branch: master
-    condition: '( -z "${access_key_id}" ) AND ( -z "${secret_access_key}" )'
-
+    condition: "$TRAVIS_SECURE_ENV_VARS"
 
 after_success: 
   - chmod a+x ./travis-automerge-script
