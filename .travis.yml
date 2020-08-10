@@ -34,5 +34,6 @@ deploy:
 
 
 after_success:
-    if: branch = "f/html"
-    - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"
+    if: branch = f/html
+      - chmod a+x ./travis-automerge-script
+      - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"
