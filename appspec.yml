@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+
+files:
+   - source: /
+     destination: /home/ubuntu/CD_Practice/
+
+hooks:
+   BeforeInstall:
+    - location: AWSscripts/stop_Server.sh
+      runas: root
+   AfterInstall:
+    - location: AWSscripts/startServer.sh
+      runas: root
