@@ -1,0 +1,55 @@
+language: python
+
+python:
+	- 3.6
+
+
+jobs:
+	include:
+		- # require the branch name to be master (note for PRs this is the base branch name)
+			if: branch = "/^f//"
+
+	build:
+
+		env:
+			# global:
+			- secure: Voe24frLptQ78cb78Fix+QacjyZvsXP5G+x+cW+RiR4TRPHW/cyhahS3L11z+AHwPXr17Rx9wQYpBMsULWI6Xut8RoXzB5bKYmEMRTUFW9/o6rq9A9HE12ewTq/rGXzCmDgwI+LIyWC2VYzAHdnPGvwCXWSpg7eczzUJUlca5znEkFeBu5I4LPsRw7/p17YVA5dB7NQxMxzj+IKUv1GNO0g/H3ZsJdLg3gCgL4ooTIX2nn4HUrvdfkZ09YP+eKSjJ60G7uJuyeGRJ7LDFCxaU7fP+fHcGaElQIHc2eDhTlSMA8w7Jvib0loK6w3PARbPuFWOC4X5x5Or7ckoUnGMCMnuNZ/8mJKMBGJKsJZAZrqjkHLtr3gbFNcQO04popaa1Og94a+rIb26Yg0wfGlS7RCGKhQowivSFvguqzN4yYZuPsnk/O6lVGza7EoKjaC2Ornk8TGy82riTHdupSaT5YRulIPrnETh/xgAmlkhZ1DWR065tlV0PMHHA8LL+bD5RX2q/AL51sEP1AFzJUEGEfk1dW8t60aSAKs+0+DHjg2kwBTeEma7vpC5F/DuMCGWdlmbBcX2XDV9VJ/d3//75c4EJP/WL5Em2uVh0yIJ20Vses9jmsL+0cKqARjWNtwIny4qm5zDDjmT0Fd22BguBZr45NXa8bKMPvxGPNrnmbk=
+
+
+		install:
+			- pip install -r requirements.txt
+
+		script:
+			- pytest -v
+
+		after_success:
+			- chmod a+x ./travis-automerge-script
+			- "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"
+
+
+jobs:
+	include:
+		- # require the branch name to be master (note for PRs this is the base branch name)
+			if: branch = master
+
+	build:
+
+		env:
+			# global:
+			- secure: kYfEUayiFvO4CcXYO2M8qNpW7/VHI+H9a8H3wO35yXhSN+VmJiejr4m69t7OfM5zrhumqDan7rb7JTXX6hPoT8RSs+7Al9Ga8k3ImUX7jIxnv/J6BomAeQQK7IYAufHWpzxXr6iAI4hSt6sAwL71NOXAHh9lb6Bq8W0q8GgluT+UXAOTJkPljIde9Kt/9w3oIGczH1lj6xl1ZHxZPjibTDzjICGHWi9dmC9TH2YKuUR6MhSA5gI6NSDENiAWQPfBO52qOM0uhZTCNHslXk+iOP5iwTI8QFUTxmeGSMUsQ5ZlabJhZe2Wljjzb8uSf5j9AEZT3OJku0C0zzkrdl1nmIujFA4/BB3DFi3eS16Y4/TgqWPmNUBux82feSdJcLLXxDseaJp+q90uP8ZV6SdEqoX97t/wVCvn1B9YQVDXOtRbytMPpAcdm4u4coIN4I0xouF47t3A5j/vXp0HY+VY1sby8jFhEuo3SsLBx3KIIM5tuXqDQNDOJBiusS1RU2LbA6KqrCz2+1oeVQXxU3KppA93mHS2iPFLHAiuv63AbgBgl3h6PGCocD7DwqJ80MVEwJw09uS8YmOVQwrgvgkxnL1CuA/TqQpwucIfNRbwCnsA5mjwClHS949uDmHrZvlWk2h7WhflgGMJZx39xCRNGcQiT5Ktx/YRtjVyXqADdOE=
+			- secure: RYZaIJA8ORjbYFUNWrnagCIRGgyWawL6flTTJiAA7mk7kOOS5ofRaVQ0JrZ2r8WJYROFWVB0LqPaX3w18FjBpP/mwGz6Vd/tX5gG216efcNOA0XtMaSPMUtzKqr1UbEpEHJkfcEX9NhvTLUrqEjgOuBnj+01BzXCOTY6K/TAKWAVwv41PEpJ38Up1m0dVI2duJ3Yb5/KSxqdKEIQIMk6Triv5oxF7msTWIU0UYUbLNKqdqRkYmx5aiwRv/SxiQUfm5G+4aXxJZ0okg8N7bP/Moa3K2xvtUtBSfbbQNNusmnlzmVZI9WDu7AF0aa8zovwCu6ZIziyQjH/iiCJwfz3WL1JoHttD3o/lcr9idpXLPZTKmZtQ7I4hjjVnMOvGDjzFboRyUD3TvP21l+MirWGXtxYeu2uvBoXSwKlndVqlL1WJPBaHewlb7RJNq6SrKDahEL/No+27LiKbeq/AM6KU7xId2kom0ucM1p7SiNx+/qR+8e8Ix0w9jDebs6szRor0+XFyH9a6Ygae0RD1yUbs0cbdeS4Jyk1txFfZVfRV0qYKvM7zle7K9+VNQDOxS0yUeq/qKxBQykFxTmk0P0Sxmo2M6h5bK9amLrcGNpJZO9dwkPDvus7teYud6tME4UgWdF5CQugPjMijxcAFbC7bFo8oy465imLTIL+3xyY6mU=
+
+
+		deploy:
+			provider: codedeploy
+			revision_type: github
+			access_key_id: $access_key_id
+			secret_access_key: $secret_access_key
+			application: CD_Practice_APP
+			deployment_group: ProdEnv
+			region: us-east-2
+			wait-until-deployed: true
+			on:
+				branch: master
+
+
