@@ -1,0 +1,22 @@
+language: python
+
+python:
+  - 3.6
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - pytest -v
+
+branches:
+  only:
+  - "/^f//"
+
+env:
+  global:
+    - secure: Voe24frLptQ78cb78Fix+QacjyZvsXP5G+x+cW+RiR4TRPHW/cyhahS3L11z+AHwPXr17Rx9wQYpBMsULWI6Xut8RoXzB5bKYmEMRTUFW9/o6rq9A9HE12ewTq/rGXzCmDgwI+LIyWC2VYzAHdnPGvwCXWSpg7eczzUJUlca5znEkFeBu5I4LPsRw7/p17YVA5dB7NQxMxzj+IKUv1GNO0g/H3ZsJdLg3gCgL4ooTIX2nn4HUrvdfkZ09YP+eKSjJ60G7uJuyeGRJ7LDFCxaU7fP+fHcGaElQIHc2eDhTlSMA8w7Jvib0loK6w3PARbPuFWOC4X5x5Or7ckoUnGMCMnuNZ/8mJKMBGJKsJZAZrqjkHLtr3gbFNcQO04popaa1Og94a+rIb26Yg0wfGlS7RCGKhQowivSFvguqzN4yYZuPsnk/O6lVGza7EoKjaC2Ornk8TGy82riTHdupSaT5YRulIPrnETh/xgAmlkhZ1DWR065tlV0PMHHA8LL+bD5RX2q/AL51sEP1AFzJUEGEfk1dW8t60aSAKs+0+DHjg2kwBTeEma7vpC5F/DuMCGWdlmbBcX2XDV9VJ/d3//75c4EJP/WL5Em2uVh0yIJ20Vses9jmsL+0cKqARjWNtwIny4qm5zDDjmT0Fd22BguBZr45NXa8bKMPvxGPNrnmbk=
+
+after_success:
+    - chmod a+x ./travis-automerge-script
+    - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"
