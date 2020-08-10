@@ -25,8 +25,10 @@ deploy:
   wait-until-deployed: true
   on:
     branch: master
+    condition: "[ -z "${access_key_id}" ] && [ -z "${secret_access_key}" ]"
 
 
 after_success:
+  if: "[ -z "${GITHUB_SECRET_TOKEN}" ]" 
     - chmod a+x ./travis-automerge-script
     - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"
