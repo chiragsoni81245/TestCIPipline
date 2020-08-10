@@ -27,6 +27,7 @@ deploy:
   application: CD_Practice_APP
   deployment_group: ProdEnv
   region: us-east-2
+  wait-until-deployed: true
   on:
     branch: master
 
