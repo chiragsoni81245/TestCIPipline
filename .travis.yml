@@ -25,7 +25,7 @@ deploy:
   wait-until-deployed: true
   on:
     branch: master
-    condition: "[ -z "${access_key_id}" ] && [ -z "${secret_access_key}" ]"
+    condition: '! test -z "${access_key_id}" && ! test -z "${secret_access_key}"' 
 
 
 after_success: 
