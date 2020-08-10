@@ -21,13 +21,6 @@ env:
     - secure: RYZaIJA8ORjbYFUNWrnagCIRGgyWawL6flTTJiAA7mk7kOOS5ofRaVQ0JrZ2r8WJYROFWVB0LqPaX3w18FjBpP/mwGz6Vd/tX5gG216efcNOA0XtMaSPMUtzKqr1UbEpEHJkfcEX9NhvTLUrqEjgOuBnj+01BzXCOTY6K/TAKWAVwv41PEpJ38Up1m0dVI2duJ3Yb5/KSxqdKEIQIMk6Triv5oxF7msTWIU0UYUbLNKqdqRkYmx5aiwRv/SxiQUfm5G+4aXxJZ0okg8N7bP/Moa3K2xvtUtBSfbbQNNusmnlzmVZI9WDu7AF0aa8zovwCu6ZIziyQjH/iiCJwfz3WL1JoHttD3o/lcr9idpXLPZTKmZtQ7I4hjjVnMOvGDjzFboRyUD3TvP21l+MirWGXtxYeu2uvBoXSwKlndVqlL1WJPBaHewlb7RJNq6SrKDahEL/No+27LiKbeq/AM6KU7xId2kom0ucM1p7SiNx+/qR+8e8Ix0w9jDebs6szRor0+XFyH9a6Ygae0RD1yUbs0cbdeS4Jyk1txFfZVfRV0qYKvM7zle7K9+VNQDOxS0yUeq/qKxBQykFxTmk0P0Sxmo2M6h5bK9amLrcGNpJZO9dwkPDvus7teYud6tME4UgWdF5CQugPjMijxcAFbC7bFo8oy465imLTIL+3xyY6mU=
 
 
-matrix:
-  fast_finish: true
-
-# This is required to enable container based Travis CI infrastructure.
-# See http://docs.travis-ci.com/user/migrating-from-legacy/
-sudo: false
-
 deploy:
   provider: codedeploy
   revision_type: github
