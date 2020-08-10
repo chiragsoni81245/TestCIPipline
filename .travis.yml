@@ -1,13 +1,13 @@
 language: python
 
 python:
-- 3.6
+  - 3.6
 
 install:
-- pip install -r requirements.txt
+  - pip install -r requirements.txt
 
 script:
-- pytest -v
+  - pytest -v
 
 branches:
   only:
@@ -32,9 +32,7 @@ deploy:
   on:
     branch: master
 
-cache: pip
 
 after_success:
-- chmod a+x ./travis-automerge-script
-- BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline
-  ./travis-automerge-script
+    -test $TRAVIS_BRANCH = "/^f//" &&
+        "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"

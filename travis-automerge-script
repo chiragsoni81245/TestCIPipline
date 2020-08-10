@@ -1,10 +1,12 @@
 #!/bin/bash -e
 
+chmod a+x ./travis-automerge-script
+
 : "${BRANCHES_TO_MERGE_REGEX?}" "${BRANCH_TO_MERGE_INTO?}"
 : "${GITHUB_SECRET_TOKEN?}" "${GITHUB_REPO?}"
 
-export GIT_COMMITTER_EMAIL='travis@travis'
-export GIT_COMMITTER_NAME='Travis CI'
+export GIT_COMMITTER_EMAIL='chiragsoni81245@gmail.com'
+export GIT_COMMITTER_NAME='chiragsoni81245'
 
 if ! grep -q "$BRANCHES_TO_MERGE_REGEX" <<< "$TRAVIS_BRANCH"; then
     printf "Current branch %s doesn't match regex %s, exiting\\n" \
