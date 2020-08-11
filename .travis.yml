@@ -14,9 +14,10 @@ branches:
   - master
   - "/^f//"
   
-before_deploy: "echo ans--$TRAVIS_SECURE_ENV_VARS"
+before_deploy: "$TRAVIS_SECURE_ENV_VARS && echo 'Skipping_deploy'"
 
 deploy:
+  skip_cleanup: true
   provider: codedeploy
   revision_type: github
   access_key_id: $access_key_id
@@ -27,7 +28,7 @@ deploy:
   wait-until-deployed: true
   on:
     branch: master
-    condition: "$TRAVIS_SECURE_ENV_VARS"
+    condition: $TRAVIS_SECURE_ENV_VARS
 
 after_success: 
   - chmod a+x ./travis-automerge-script
