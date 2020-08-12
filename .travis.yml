@@ -22,7 +22,6 @@ deploy:
   wait-until-deployed: true
   on:
     branch: master
-    condition: $TRAVIS_SECURE_ENV_VARS == true
 
 after_success: 
   - chmod a+x ./travis-automerge-script
