@@ -3,17 +3,17 @@ language: python
 python:
   - 3.6
 
-install:
-  - pip install -r requirements.txt
 
-script:
-  - pytest -v
+jobs:
+  include:
+    - if branch != master
 
-branches:
-  only:
-  - master
-  - "/^f//"
-  
+  install:
+    - pip install -r requirements.txt
+
+  script:
+    - pytest -v
+
 
 deploy:
   skip_cleanup: true
@@ -27,8 +27,7 @@ deploy:
   wait-until-deployed: true
   on:
     branch: master
-    condition: $TRAVIS_SECURE_ENV_VARS
 
-after_success: 
-  - chmod a+x ./travis-automerge-script
-  - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"
+# after_success: 
+#   - chmod a+x ./travis-automerge-script
+#   - "BRANCHES_TO_MERGE_REGEX='^f/' BRANCH_TO_MERGE_INTO=master GITHUB_REPO=chiragsoni81245/TestCIPipline ./travis-automerge-script"
