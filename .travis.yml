@@ -1,17 +1,14 @@
-jobs:
-  include:
-    - if: branch != master
+language: python
 
-    language: python
+python:
+  - 3.6
 
-    python:
-      - 3.6
-    
-    install:
-      - pip install -r requirements.txt
 
-    script:
-      - pytest -v
+install:
+  - pip install -r requirements.txt
+
+script:
+  - pytest -v
 
 
 deploy:
