@@ -13,4 +13,4 @@ def client():
 
 def test_empty_db(client):
 	rv = client.get('/')
-	assert b'** v21 **' in rv.data
+	assert b'** v22 **' in rv.data
